@@ -1,0 +1,28 @@
+{
+  "name": "maron",
+  "version": "0.1.0",
+  "description": "Markdown形式のドキュメントを論文の書式でプレビュー、PDF書き出しができるアプリ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "taroc",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "marked": "^0.3.6",
+    "mathjax": "^2.7.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "browser-sync-webpack-plugin": "^1.1.3",
+    "css-loader": "^0.26.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "node-sass": "^3.13.0",
+    "webpack": "^1.13.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "webpack-build-notifier": "^0.1.13"
+  }
+}

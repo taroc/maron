@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            styles: {
+                '.MathJax_Display': {
+                    margin: '0 !important',
+                    'padding-bottom': '20px'
+                }
+            },
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            CommonHTML: { matchFontHeight: false },
+            skipStartupTypeset: true,
+            TeX: {
+                equationNumbers: {
+                    autoNumber: 'AMS',
+                    formatTag: function (n) {
+                        if(this.chapterNum != n){
+                            this.eqNum = 0;
+                            this.chapterNum = n;
+                        }
+                        
+                        this.eqNum += 1;
+                        
+                        return '(' + n + '.' + this.eqNum + ')';
+                    },
+                    useLabelIds: true,
+                    chapterNum: '1',
+                    eqNum: 0
+                }
+            }
+        });
+    </script>
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="./dist/js/bundle.js"></script>
+
+    <link rel="stylesheet" href="./dist/css/style.css">
+</head>
+<body>
+   <div id="view_wrapper" src="./README.md">
+       <div id="view"></div>
+   </div>
+</body>
+</html>

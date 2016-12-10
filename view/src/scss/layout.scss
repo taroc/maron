@@ -1,0 +1,157 @@
+$base-font-size: 17px;
+
+$bg-color: #555;
+h1, h2, h3, h4, h4, h5, p, figure, ul, div {
+    margin: 0;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    &:visited,
+    &:link {
+        color: #000;
+        text-decoration: none;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Helvetica, "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: normal;
+}
+strong {
+    font-weight: 600;
+}
+body {
+    width: 210mm;
+    overflow-x: hidden;
+    margin: 0;
+    font-size: $base-font-size;
+    font-family: Helvetica, "游明朝" , "Yu Mincho", serif;
+    font-weight: 300;
+    background-color: #fff;
+}
+#view_wrapper {
+    width: 100%;
+    background-color: #fff;
+    padding: 0;
+    margin: 0 auto;
+}
+#view {
+    width: 100%;
+    margin: 0 auto;
+}
+.page-num {
+    position: relative;
+    text-align: center;
+    //border: 1px #555 solid;
+    page-break-inside: avoid;
+    page-break-after: always;
+}
+
+.page-num div {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    font-size: 50px;
+    padding-bottom: 55px;
+    &:before {
+        content: attr(data-num);
+        padding-right: 1em;
+    }
+    &.bib {
+        margin-bottom: 0;
+    }
+    &.bib:before {
+        content: '';
+        padding-right: 0;
+    }
+    &.bib+ul {
+        padding: 0;
+        list-style: none;
+        
+        li {
+            padding-bottom: 5px;
+        }
+        li:before{
+            content: attr(data-num);
+        }
+    }
+}
+h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    &:before {
+        content: attr(data-num);
+        padding-right: 1em;
+    }
+}
+
+h3 {
+    font-size: 20px;
+    padding-bottom: 20px;
+    &:before {
+        content: attr(data-num);
+        padding-right: 1em;
+    }
+}
+
+figure {
+    padding-bottom: 20px;
+    text-align: center;
+    img {
+        text-align: center;
+    }
+    figcaption {
+        text-align: center;
+    }
+    figcaption:before {
+        content: attr(data-num);
+        padding-right: 1em;
+    }
+}
+
+figure.table {
+    figcaption {
+        vertical-align: middle;
+        padding-bottom: 5px;
+    }
+}
+table {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-collapse: collapse;
+}
+thead {
+    border-bottom: 1px solid #000;
+}
+tr th {
+    padding: 3px 10px;
+    font-weight: 300;
+}
+tr td {
+    padding: 3px 10px;
+}
+tbody tr:first-child td {
+    padding-top: 8px;
+}
+tbody tr:last-child td {
+     padding-bottom: 8px;
+}
+
+ul {
+    padding-bottom: 20px;
+}
+p {
+    line-height: 1.5;
+    padding-bottom: 20px;
+}
+@page {
+    size: A4;
+    margin: 25.5mm 20mm 17.5mm;
+}
