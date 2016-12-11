@@ -10,6 +10,7 @@
   "author": "taroc",
   "license": "MIT",
   "dependencies": {
+    "chokidar": "^1.6.1",
     "jquery": "^3.1.1",
     "marked": "^0.3.6",
     "mathjax": "^2.7.0"
