@@ -40,6 +40,11 @@ renderer.link = function (href, nouse, type) {
     //相互参照は(種類):(ラベル)の形
     //例えば、画像ならfig:ref1
     //参考文献ならbib:ref1
+    
+    if(type == 'eq'){
+        return '\\eqref{' + href + '}';
+    }
+    
     return '<a href="#' + type + ':' + href + '" class="cite">'
             + 'a'
             + '</a>';
