@@ -29,7 +29,7 @@ renderer.image = function (src, title, ref) {
     return '<figure id="fig:' + ref + ' class="image">\n'
             + '<img src="' + src + '">\n'
             + '<figcaption class="image '+ ref + '" '
-            + 'data-num="図 '+ this.counter_h1 + '.' + this.counter_figcap + '："'
+            + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
             + '>\n'
             + title
             + '</figcaption>\n'
@@ -167,7 +167,7 @@ renderer.tablerow = function(content) {
         this.counter_table += 1;
         var table_title = content.split(':')[1];
         var ref = content.split(':')[3];
-        return '<figcaption class="table ' + ref + '"' + ' data-num="表 ' + this.counter_h1 + '.' + this.counter_table + '：">'
+        return '<figcaption class="table ' + ref + '"' + ' data-num="' + this.counter_h1 + '.' + this.counter_table + '">'
                 + table_title;
                 + '<\figcaption>'
     }

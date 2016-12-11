@@ -45,7 +45,7 @@ page.set_link_number = function(){
                 var $element = $(this);
                 if($element.hasClass(ref)){
                     isExist = true;
-                    $link.html($element.attr('data-num').substr(0, 5));
+                    $link.html('(' + $element.attr('data-num').substr(0, 5) + ')');
                 }
                 if(!isExist){
                     $link.html('???');

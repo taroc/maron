@@ -108,18 +108,25 @@ figure {
     figcaption {
         text-align: center;
     }
-    figcaption:before {
-        content: attr(data-num);
-        padding-right: 1em;
+    &.image {
+        figcaption:before {
+            content: "図"attr(data-num)"：";
+            padding-right: 1em;
+        }
     }
+    &.table {
+        figcaption {
+            vertical-align: middle;
+            padding-bottom: 5px;
+        }
+        figcaption:before {
+            content: "表"attr(data-num)"：";
+            padding-right: 1em;
+        }
+    }
+    
 }
 
-figure.table {
-    figcaption {
-        vertical-align: middle;
-        padding-bottom: 5px;
-    }
-}
 table {
     margin: 0 auto;
     margin-bottom: 20px;
