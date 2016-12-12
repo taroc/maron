@@ -81,7 +81,7 @@
         ipc.on('reload', function(event){
             if(markdownPath != ''){
                 console.log('reload')
-                webview.send('load-markdown', markdownPath);
+                webview.send('reload-markdown', markdownPath);
             }else{
                 webview.reload();
             }
