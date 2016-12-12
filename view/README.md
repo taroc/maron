@@ -42,14 +42,14 @@ $$
 例：
 
 ```
-![ref1](./img/image.png "画像１")
+![label](./img/image.png "画像１")
 
-[fig](ref1)
+[fig](label)
 ```
 
-![ref1](./img/image.png "タイトル")
+![label](./img/image.png "タイトル")
 
-[fig](ref1)
+[fig](label)
 
 ### 表
 
@@ -62,13 +62,13 @@ $$
 | be | be | be |
 | left | right | center |
 | aligned | aligned | aligned |
-|title:タイトル:ref:ref1|
+|title:タイトル:label:label|
 
-[table](ref1)
+[table](label)
 ```
 
 このように書くと以下のように出力されます。
-一番最後の行は「title:タイトル:ref:ラベル」の形式でタイトルとラベルを設定します。
+一番最後の行は「title:タイトル:label:ラベル」の形式でタイトルとラベルを設定します。
 ```[table](ラベル)```で表番号を参照できます。
 
 
@@ -80,6 +80,6 @@ $$
 | be | be | be |
 | left | right | center |
 | aligned | aligned | aligned |
-|title:タイトル:ref:ref1|
+|title:タイトル:label:label|
 
-[table](ref1)
+[table](label)

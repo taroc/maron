@@ -16,8 +16,8 @@ renderer.init_number = function(){
     this.counter_bib = 0;
 };
 
-renderer.image = function (src, title, ref) {
-    //refにはラベルの名前が入っている
+renderer.image = function (src, title, label) {
+    
     if(this.filepath != ''){
         if(/^\.\//.test(src)){
             src = src.replace(/^\.\//, this.filepath);
@@ -26,9 +26,9 @@ renderer.image = function (src, title, ref) {
         }
     }
     this.counter_figcap += 1;
-    return '<figure id="fig:' + ref + ' class="image">\n'
+    return '<figure id="fig:' + label + ' class="image">\n'
             + '<img src="' + src + '">\n'
-            + '<figcaption class="image '+ ref + '" '
+            + '<figcaption class="image '+ label + '" '
             + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
             + '>\n'
             + title
@@ -36,16 +36,16 @@ renderer.image = function (src, title, ref) {
             + '</figure>';
 };
 
-renderer.link = function (href, nouse, type) {
+renderer.link = function (label, nouse, type) {
     //相互参照は(種類):(ラベル)の形
-    //例えば、画像ならfig:ref1
-    //参考文献ならbib:ref1
+    //例えば、画像ならfig:label
+    //参考文献ならbib:label
     
     if(type == 'eq'){
-        return '\\eqref{' + href + '}';
+        return '\\eqref{' + label + '}';
     }
     
-    return '<a href="#' + type + ':' + href + '" class="cite">'
+    return '<a href="#' + type + ':' + label + '" class="cite">'
             + 'a'
             + '</a>';
 };
@@ -76,10 +76,10 @@ renderer.paragraph = function (text) {
     var re = /(\$\$[\s \S])([\s \S \w \d]*)(^\$\$$)/m;
     if (re.test(text)) {
         var equation = text.match(re);
-        return '<p>\\begin{align}\n'
+        return '<p>$$\\begin{align}\n'
                 //行末に章番号情報を埋め込む
-                + equation[2].replace(/\/\/\//g, ' \\tag{' + this.counter_h1 + '}\n')+' \\tag{' + this.counter_h1 + '}\n'
-                + '\\end{align}</p>';
+                + equation[2].replace(/\/\/\//g, ' \\tag{' + this.counter_h1 + '}')+' \\tag{' + this.counter_h1 + '}\n'
+                + '\\end{align}$$</p>';
     }
     
     //番号を振らないとき
@@ -171,8 +171,8 @@ renderer.tablerow = function(content) {
     if(/^title:/.test(content)){
         this.counter_table += 1;
         var table_title = content.split(':')[1];
-        var ref = content.split(':')[3];
-        return '<figcaption class="table ' + ref + '"' + ' data-num="' + this.counter_h1 + '.' + this.counter_table + '">'
+        var label = content.split(':')[3];
+        return '<figcaption class="table ' + label + '"' + ' data-num="' + this.counter_h1 + '.' + this.counter_table + '">'
                 + table_title;
                 + '<\figcaption>'
     }

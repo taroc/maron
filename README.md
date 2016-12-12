@@ -44,7 +44,7 @@ $$
 
 例：
 ```
-![ref1](./img/image.png "画像１")
+![label](./img/image.png "画像１")
 ```
 
 ![画像の例](./img/image.png "画像")
@@ -60,11 +60,11 @@ $$
 | be | be | be |
 | left | right | center |
 | aligned | aligned | aligned |
-|title:test:ref:tb|
+|title:test:label:tb|
 ```
 
 このように書くと以下のように出力されます。
-一番最後の行は「title:タイトル:ref:ラベル」の形式でタイトルとラベルを設定します。
+一番最後の行は「title:タイトル:label:ラベル」の形式でタイトルとラベルを設定します。
 
 また、```[table](ラベル)``` で表番号を参照できます。
 

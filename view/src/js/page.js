@@ -17,7 +17,7 @@ page.set_link_number = function(){
         var $link = $(this);
         var href = $link.attr('href');
         var type = href.split(':')[0];
-        var ref = href.split(':')[1];
+        var label = href.split(':')[1];
         
         var target = null;
         switch(type){
@@ -43,7 +43,7 @@ page.set_link_number = function(){
             var isExist = false;
             target.each(function(){
                 var $element = $(this);
-                if($element.hasClass(ref)){
+                if($element.hasClass(label)){
                     isExist = true;
                     $link.html('(' + $element.attr('data-num').substr(0, 5) + ')');
                 }
