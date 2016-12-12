@@ -56,13 +56,13 @@ $$
 ```
 | Left align | Right align | Center align |
 |:-----------|------------:|:------------:|
-| This | This | This |
-| column | column | column |
-| will | will | will |
-| be | be | be |
-| left | right | center |
-| aligned | aligned | aligned |
-|title:タイトル:label:label|
+|  This      |      This   |     This     |
+|  column    |    column   |    column    |
+|  will      |      will   |     will     |
+|  be        |        be   |      be      |
+|  left      |     right   |    center    |
+|  aligned   |   aligned   |   aligned    |
+|title:test:label:tb|
 
 [table](label)
 ```
@@ -74,12 +74,12 @@ $$
 
 | Left align | Right align | Center align |
 |:-----------|------------:|:------------:|
-| This | This | This |
-| column | column | column |
-| will | will | will |
-| be | be | be |
-| left | right | center |
-| aligned | aligned | aligned |
-|title:タイトル:label:label|
+|  This      |      This   |     This     |
+|  column    |    column   |    column    |
+|  will      |      will   |     will     |
+|  be        |        be   |      be      |
+|  left      |     right   |    center    |
+|  aligned   |   aligned   |   aligned    |
+|title:test:label:tb|
 
 [table](label)

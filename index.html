@@ -46,7 +46,7 @@
 <body>
     <div class="wrapper">
         <webview id='mainWebView'
-            src='./view/index.html'
+            src='./view/view.html'
             autosize="on"
             preload="./lib/js/bridge.js"></webview>
     </div>
@@ -64,7 +64,7 @@
         var pdfPath = '';
         
         webview.addEventListener("dom-ready", function(){
-            //webview.openDevTools();
+            webview.openDevTools();
         });
         
         ipc.on('open-markdown', function(event, filepath){
