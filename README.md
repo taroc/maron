@@ -6,6 +6,8 @@ Markdown形式のドキュメントを論文の書式でプレビュー、PDF書
 
 論文の書式を表現するためにMarkdownを拡張した書き方をします。
 
+プレビューするだけなので、エディタ機能はありません。
+
 ## ダウンロード
 
 [リリースページ](https://github.com/taroc/maron/releases)からダウンロードできます。
@@ -30,6 +32,7 @@ Markdown：
 ```
 
 表示：
+
 ![数式の例](./document/img/math_inline.png "インライン数式")
 
 $$で囲めばtexのalign環境として表示されます。
@@ -44,6 +47,7 @@ $$
 ```
 
 表示：
+
 ![数式の例](./document/img/math_display.png "数式")
 
 ### 画像
@@ -65,6 +69,7 @@ Markdown：
 ```
 
 表示：
+
 ![画像の例](./document/img/image.png "画像")
 
 ### 表
@@ -88,6 +93,7 @@ Markdown：
 また、```[table](ラベル)``` で表番号を参照できます。
 
 表示：
+
 ![表の例](./document/img/table.png "表")
 
 ## LICENSE
