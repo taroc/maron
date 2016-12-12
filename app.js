@@ -32,7 +32,7 @@ app.on('ready', function(){
 // メニュー情報の作成
 var template = [
     {
-        label: 'ReadUs',
+        label: 'maron',
         submenu: [
             {
                 label: 'Quit',
