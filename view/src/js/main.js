@@ -21,7 +21,7 @@ $(document).ready(function(){
         //数式を描画
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'view']);
         MathJax.Hub.Queue(function () {
-            //ノンブルを計算
+            //改ページを計算
             page.calculate_pages();
             
             //改ページ部分の余白を設定
