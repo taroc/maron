@@ -26,7 +26,7 @@ renderer.image = function (src, title, label) {
         }
     }
     this.counter_figcap += 1;
-    return '<figure id="fig:' + label + ' class="image">\n'
+    return '<figure id="fig:' + label + '" class="image">\n'
             + '<img src="' + src + '">\n'
             + '<figcaption class="image '+ label + '" '
             + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
