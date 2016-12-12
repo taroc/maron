@@ -20,7 +20,7 @@ renderer.image = function (src, title, ref) {
     //refにはラベルの名前が入っている
     if(this.filepath != ''){
         if(/^\.\//.test(src)){
-            src.replace(/^\.\//, this.filepath);
+            src = src.replace(/^\.\//, this.filepath);
         }else{
             src = this.filepath + src;
         }
