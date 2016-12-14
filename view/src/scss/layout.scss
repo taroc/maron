@@ -74,9 +74,13 @@ h1 {
         list-style: none;
         
         li {
+            position: relative;
+            padding-left: 30px;
             padding-bottom: 5px;
         }
         li:before{
+            position: absolute;
+            left: 0px;
             content: attr(data-num);
         }
     }
