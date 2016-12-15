@@ -199,3 +199,25 @@ renderer.tablecell = function(content, flags) {
     : '<' + type + '>';
     return tag + content + '</' + type + '>\n';
 };
+
+renderer.code = function (code, language) {
+    if(code.match(/^sequenceDiagram/)||code.match(/^graph/)){
+        console.log(language)
+        var title = language.split(':')[0];
+        var label = language.split(':')[1];
+        this.counter_figcap += 1;
+        return '<figure id="fig:' + label + '" class="image">\n'
+                + '<div class="mermaid">\n'
+                + code
+                + '</div>\n'
+                + '<figcaption class="image '+ label + '" '
+                + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
+                + '>\n'
+                + title
+                + '</figcaption>\n'
+                + '</figure>';
+    }
+    else{
+        return '<pre><code>'+code+'</code></pre>';
+    }
+};
