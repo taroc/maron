@@ -18,9 +18,16 @@ $(document).ready(function(){
         var viewer = document.getElementById('view');
         viewer.innerHTML = md;
         
-        //数式を描画
+        
+        //式番号をリセット
         MathJax.Hub.config.TeX.equationNumbers.chapterNum = '1';
         MathJax.Hub.config.TeX.equationNumbers.eqNum = 0;
+        MathJax.Hub.Queue(
+          ["resetEquationNumbers",MathJax.InputJax.TeX],
+          ["PreProcess",MathJax.Hub],
+          ["Reprocess",MathJax.Hub]
+        );
+        //数式を描画
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'view']);
         MathJax.Hub.Queue(function () {
             //図を描画
