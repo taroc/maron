@@ -26,7 +26,7 @@ renderer.image = function (src, title, label) {
         }
     }
     this.counter_figcap += 1;
-    return '<figure id="fig:' + label + '" class="image">\n'
+    return '<figure id="fig-' + label + '" class="image">\n'
             + '<img src="' + src + '">\n'
             + '<figcaption class="image '+ label + '" '
             + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
@@ -48,11 +48,7 @@ renderer.link = function (label, nouse, type) {
         return label
     }
     
-    if(type == 'eq'){
-        return '\\eqref{' + label + '}';
-    }
-    
-    return '<a href="#' + type + ':' + label + '" class="cite">'
+    return '<a href="#' + type + '-' + label + '" class="cite">'
             + 'a'
             + '</a>';
 };

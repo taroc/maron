@@ -17,14 +17,16 @@ $(document).ready(function(){
         var md = marked(mdtext, {renderer: renderer});
         var viewer = document.getElementById('view');
         viewer.innerHTML = md;
-        //リンクの処理
-        page.set_link_number();
         
         //数式を描画
+        MathJax.Hub.config.TeX.equationNumbers.chapterNum = '1';
+        MathJax.Hub.config.TeX.equationNumbers.eqNum = 0;
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'view']);
         MathJax.Hub.Queue(function () {
             //図を描画
             mermaid.init();
+            //リンクの処理
+            page.set_link_number();
             //改ページを計算
             page.calculate_pages();
             

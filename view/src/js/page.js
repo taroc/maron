@@ -16,8 +16,8 @@ page.set_link_number = function(){
     $cites.each(function(){
         var $link = $(this);
         var href = $link.attr('href');
-        var type = href.split(':')[0];
-        var label = href.split(':')[1];
+        var type = href.split('-')[0];
+        var label = href.split('-')[1];
         
         var target = null;
         switch(type){
@@ -29,6 +29,11 @@ page.set_link_number = function(){
                 break;
             case '#bib':
                 target = $biblists;
+                break;
+            case '#eq':
+                target = $('#eq-' + label);
+                $link.html(target.text());
+                return;
                 break;
         };
         

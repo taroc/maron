@@ -23,10 +23,12 @@
                             this.eqNum = 0;
                             this.chapterNum = n;
                         }
-                        
                         this.eqNum += 1;
                         
                         return '(' + n + '.' + this.eqNum + ')';
+                    },
+                    formatID: function(id) {
+                        return 'eq-'+String(id).replace(/[:'"<>&]/g,"")
                     },
                     useLabelIds: true,
                     chapterNum: '1',
