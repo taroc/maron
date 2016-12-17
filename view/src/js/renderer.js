@@ -81,7 +81,7 @@ renderer.paragraph = function (text) {
         var equation = text.match(re);
         return '<p>$$\\begin{align}\n'
                 //行末に章番号情報を埋め込む
-                + equation[2].replace(/\/\/\//g, ' \\tag{' + this.counter_h1 + '}')+' \\tag{' + this.counter_h1 + '}\n'
+                + equation[2].replace(/\\\\/g, '\\tag{' + this.counter_h1 + '}\\\\')+' \\tag{' + this.counter_h1 + '}\n'
                 + '\\end{align}$$</p>';
     }
     
