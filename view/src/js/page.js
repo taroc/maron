@@ -5,12 +5,6 @@ module.exports = page;
 page.set_link_number = function(){
     //何かを参照しているリンクを全て取得
     var $cites = $('.cite');
-    //画像のキャプションを全て取得
-    var $imgcaps = $('figcaption.image');
-    //表のキャプションを全て取得
-    var $tablecaps = $('figcaption.table');
-    //参考文献を全て取得
-    var $biblists = $('.bib').next().children();
     
     //全てのリンクに対して参照先を調べて、番号を入れる
     $cites.each(function(){
@@ -22,41 +16,28 @@ page.set_link_number = function(){
         var target = null;
         switch(type){
             case '#fig':
-                target = $imgcaps;
+                target = $(href + ' figcaption');
+                $link.html(target.attr('data-num'));
+                return;
                 break;
             case '#table':
-                target = $tablecaps;
+                target = $(href + ' figcaption');
+                $link.html(target.attr('data-num'));
+                return;
                 break;
             case '#bib':
-                target = $biblists;
+                target = $(href);
+                $link.html(target.attr('data-num'));
+                return;
                 break;
             case '#eq':
-                target = $('#eq-' + label);
+                target = $(href);
                 $link.html(target.text());
                 return;
                 break;
         };
         
-        if(target==null){
-            $link.html('???');
-            return;
-        }
-        if(target.length == 0){
-            $link.html('???');
-        }else{
-            //ラベルに一致する要素を探す
-            var isExist = false;
-            target.each(function(){
-                var $element = $(this);
-                if($element.hasClass(label)){
-                    isExist = true;
-                    $link.html('(' + $element.attr('data-num').substr(0, 5) + ')');
-                }
-                if(!isExist){
-                    $link.html('???');
-                }
-            });
-        }
+        $link.html('???');
     });
 };
 var pageManager = function(){

@@ -28,7 +28,7 @@ renderer.image = function (src, title, label) {
     this.counter_figcap += 1;
     return '<figure id="fig-' + label + '" class="image">\n'
             + '<img src="' + src + '">\n'
-            + '<figcaption class="image '+ label + '" '
+            + '<figcaption '
             + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
             + '>\n'
             + title
@@ -38,8 +38,8 @@ renderer.image = function (src, title, label) {
 
 renderer.link = function (label, nouse, type) {
     //相互参照は(種類):(ラベル)の形
-    //例えば、画像ならfig:label
-    //参考文献ならbib:label
+    //例えば、画像ならfig-label
+    //参考文献ならbib-label
     
     //丸括弧だけの時は参照でない
     //この時、typeとlabelに同じものが入っているので
@@ -67,7 +67,7 @@ renderer.listitem = function (text) {
     this.counter_bib += 1;
     var label = t[1];
     text = t[2];
-    return '<li class="' + label + '" '
+    return '<li id="bib-' + label + '" '
             + 'data-num="[' + this.counter_bib + ']">'
             + text
             + '</li>'
@@ -156,8 +156,15 @@ renderer.heading = function (text, level) {
     return '<h' + level + '>' + text + '</h' + level + '>';
 };
 
+renderer.table_title = '';
+renderer.table_label = '';
+
 renderer.table = function(header, body){
-    return '<figure class="table">\n'
+    this.counter_table += 1;
+    var tag = '<figure id="table-' + this.table_label + '" class="table">\n'
+    + '<figcaption ' + 'data-num="' + this.counter_h1 + '.' + this.counter_table + '">'
+    + this.table_title
+    + '</figcaption>'
     + '<table>\n'
     + '<thead>\n'
     + header
@@ -167,26 +174,26 @@ renderer.table = function(header, body){
     + '</tbody>\n'
     + '</table>\n'
     + '</figure>';
+    
+    this.table_title = '';
+    this.table_label = '';
+    return tag;
 };
 
 renderer.tablerow = function(content) {
-    //タイトルを指定する行はfigcaptionに変換
-    if(/^title:/.test(content)){
-        this.counter_table += 1;
-        var table_title = content.split(':')[1];
-        var label = content.split(':')[3];
-        return '<figcaption class="table ' + label + '"' + ' data-num="' + this.counter_h1 + '.' + this.counter_table + '">'
-                + table_title;
-                + '<\figcaption>'
+    if(content == 'null'){
+        return '';
     }
     
     return '<tr>\n' + content + '</tr>\n';
 };
 
 renderer.tablecell = function(content, flags) {
-    //タイトルを指定する行はそのまま行の処理へ
+    //タイトルとラベルを記録
     if(/^title:/.test(content)){
-        return content;
+        this.table_title = content.split(':')[1];
+        this.table_label = content.split(':')[3];
+        return null;
     }
     
     var type = flags.header ? 'th' : 'td';
@@ -206,7 +213,7 @@ renderer.code = function (code, language) {
                 + '<div class="mermaid">\n'
                 + code
                 + '</div>\n'
-                + '<figcaption class="image '+ label + '" '
+                + '<figcaption '
                 + 'data-num="'+ this.counter_h1 + '.' + this.counter_figcap + '"'
                 + '>\n'
                 + title
