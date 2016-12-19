@@ -12,6 +12,7 @@ $(document).ready(function(){
     window.render_markdown = function(mdtext, filepath, isViewIndex){
         renderer.init_number();
         renderer.filepath = filepath;
+        renderer.front_cover = null;
         
         //markdownをhtmlに
         var md = marked(mdtext, {renderer: renderer});
