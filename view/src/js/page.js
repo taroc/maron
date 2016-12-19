@@ -178,10 +178,6 @@ page.calculate_pages = function(){
             //$elemがh2かh3で次の要素で改ページするならここで改ページする
             var $elemNext = $elem.next();
             var nextHight = $elemNext.outerHeight(true);
-            console.log('---------')
-            console.log(tagName)
-            console.log($elemNext.prop('tagName'))
-            console.log($elemNext.next().prop('tagName'))
             if((tagName=='H2' || tagName=='H3') && pm.remainHeight < nextHight){
                 pm.remainHeight += $elemHeight;
                 pm.num += 1;
@@ -192,7 +188,6 @@ page.calculate_pages = function(){
                 return;
             //$elemがh2、次がh3で、h3の次で改ページする場合、h3がページに入っていてもh2で改ページする
             }else if(tagName == 'H2' && $elemNext.prop('tagName') == 'H3' && pm.remainHeight < nextHight + $elemNext.next().outerHeight(true)){
-                console.log('test')
                 pm.remainHeight += $elemHeight;
                 pm.num += 1;
                 $elem.before(pm.createNomre())
