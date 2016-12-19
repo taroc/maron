@@ -139,6 +139,7 @@ table {
     border-collapse: collapse;
 }
 thead {
+    display: table-row-group;
     border-bottom: 1px solid #000;
 }
 tr th {
