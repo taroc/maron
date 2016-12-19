@@ -43,10 +43,10 @@ var template = [
             }
         ]
     }, {
-        label: 'File',
+        label: 'ファイル',
         submenu: [
             {
-                label: 'Open',
+                label: '開く',
                 accelerator: 'Command+O',
                 click: function(){
                     // 「ファイルを開く」ダイアログの呼び出し
@@ -56,7 +56,7 @@ var template = [
                     });
                 }
             },{
-                label: 'Print',
+                label: 'PDFに書き出し',
                 accelerator: 'Command+P',
                 click: function(){
                     dialog.showSaveDialog(
@@ -73,19 +73,25 @@ var template = [
             }
         ]
     }, {
-        label: 'View',
+        label: '表示',
         submenu: [
             {
-                label: 'Reload',
+                label: '画面を更新',
                 accelerator: 'Command+R',
                 click: function(){
                     win.webContents.send('reload');
                 }
             },{
                 label: 'Toggle DevTools',
+        label: '開発',
+        submenu: [
+            {
+                label: '開発者ツールを開く',
                 accelerator: 'Alt+Command+I',
                 click: function(){
-                    BrowserWindow.getFocusedWindow().toggleDevTools();
+                    //BrowserWindow.getFocusedWindow().toggleDevTools();
+
+                    win.webContents.send('open-dev-tool');
                 }
             }
         ]
