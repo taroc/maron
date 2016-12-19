@@ -16,6 +16,8 @@ renderer.init_number = function(){
     this.counter_bib = 0;
 };
 
+renderer.front_cover = null;
+
 renderer.image = function (src, title, label) {
     
     if(this.filepath != ''){
@@ -219,6 +221,11 @@ renderer.code = function (code, language) {
                 + title
                 + '</figcaption>\n'
                 + '</figure>';
+    }
+    else if(language == 'front_cover'){
+        console.log(code)
+        this.front_cover = JSON.parse(code);
+        return '';
     }
     else{
         return '<pre><code>'+code+'</code></pre>';

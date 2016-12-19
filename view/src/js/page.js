@@ -166,6 +166,11 @@ page.calculate_pages = function(){
         if($elem.hasClass('page_index')){
             return;
         }
+        
+        if($elem.attr('id') == 'front_cover'){
+            return;
+        }
+        
         if(pm.remainHeight > $elemHeight){
             //要素がページに入るので改ページしない
             pm.remainHeight -= $elemHeight;
@@ -280,3 +285,31 @@ page.create_index = function(){
     pm.num += 1;
     $($indexes[$indexes.length - 1]).after(pm.createNomreRoman());
 };
+
+page.create_cover = function(content){
+    $('#front_cover').remove();
+    
+    var $cover = $(
+        '<section id="front_cover">'
+            +'<div class="category">' + content.category +'</div>'
+            +'<h1>' + content.title + '</h1>'
+            +'<h2>' + content.subtitle + '</h2>'
+            +'<div class="department">'
+                +'<div>' + content.department1 + '</div>'
+                +'<div>' + content.department2 + '</div>'
+            +'</div>'
+            +'<div class="name">'
+                +'<div>' + content.name1 + '</div>'
+                +'<div>' + content.name2 + '</div>'
+            +'</div>'
+            +'<div class="teach">' + content.teach + '</div>'
+            +'<div class="date">' + content.date + '</div>'
+        +'</section>'
+    );
+    var $view = $('#view');
+    $view.prepend($cover);
+    
+    var pm = new pageManager();
+    pm.remainHeight -= $cover.outerHeight(true);
+    $cover.after(pm.createMargin());
+}

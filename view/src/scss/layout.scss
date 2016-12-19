@@ -163,6 +163,40 @@ p {
     line-height: 1.5;
     padding-bottom: 20px;
 }
+
+#front_cover {
+    font-family: "Yu Mincho", serif;
+    text-align: center;
+    font-size: 25px;
+    
+    .category {
+        padding-top: 100px;
+        padding-bottom: 180px;
+    }
+    h1 {
+        font-size: 35px;
+        font-family: "Yu Mincho", serif;
+        padding-bottom: 15px;
+    }
+    h2 {
+        font-family: "Yu Mincho", serif;
+        font-style: italic;
+        padding-bottom: 250px;
+    }
+    .department {
+        padding-bottom: 20px;
+    }
+    .name {
+        padding-bottom: 20px;
+    }
+    .teach {
+        padding-bottom: 20px;
+    }
+    .date {
+        padding-bottom: 0px;
+    }
+}
+
 h1.page_index {
     padding-left: 0;
     padding-bottom: 20px;

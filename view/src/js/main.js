@@ -42,7 +42,10 @@ $(document).ready(function(){
                 page.create_index();
             }
             
-            page.create_cover();
+            //表紙を表示
+            if(renderer.front_cover != null){
+                page.create_cover(renderer.front_cover);
+            }
             
             //改ページ部分の余白を設定
             //この余白は本文の余白ではないため
