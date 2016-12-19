@@ -14,9 +14,11 @@ Markdown形式のドキュメントを論文の書式でプレビュー、PDF書
 
 ## 使い方
 
-File>OpenでMarkdownファイルを開きます。内容が更新されれば自動でリロードします。
+ファイル>開くでMarkdownファイルを開きます。内容が更新されれば自動でリロードします。
 
-File>PrintでPDFとして書き出せます。
+ファイル>PDFに書き出しでPDFとして書き出せます。
+
+表示>目次を表示で目次を自動生成します。
 
 ## 書き方
 
@@ -95,6 +97,27 @@ Markdown：
 表示：
 
 ![表の例](./document/img/table.png "表")
+
+### 表紙
+
+コードブロック要素の言語をfront_coverとして、中身に表紙の内容を書くと表紙がつきます。
+
+```md
+    ```front_cover
+    {
+        "category" : "卒業論文 or 修士論文",
+        "title" : "タイトル",
+        "subtitle" : "英語のタイトルとか",
+        "department1" : "所属1",
+        "department2" : "所属2",
+        "name1" : "名前",
+        "name2" : "名前を英語で",
+        "teach" : "指導教員",
+        "date" : "提出日"
+    }
+
+    ```
+```
 
 ## LICENSE
 This software is released under the MIT License, see LICENSE.txt.
