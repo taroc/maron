@@ -84,7 +84,7 @@ var template = [
             }, {
                 label: '目次を表示',
                 type: 'checkbox',
-                checked: true,
+                checked: false,
                 accelerator: 'Command+I',
                 click: function(){
                     win.webContents.send('toggle-index');

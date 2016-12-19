@@ -63,7 +63,7 @@ $(document).ready(function(){
     $.ajax({
         url: target[0].attributes["src"].value,
     }).done(function(data){
-        render_markdown(data, '', true);
+        render_markdown(data, '', false);
     }).fail(function(data){
         console.log("This content failed to load.");
     });
