@@ -42,12 +42,13 @@ page.set_link_number = function(){
 };
 var pageManager = function(){
     this.footerHeight = 30;
-    this.remainHeight = 1170 - this.footerHeight;
+    this.pageSize = 1270;
+    this.remainHeight = this.pageSize - this.footerHeight;
     this.num = 0;
 };
 
 pageManager.prototype.reset = function(){
-    this.remainHeight = 1170 - this.footerHeight;
+    this.remainHeight = this.pageSize - this.footerHeight;
 };
 
 pageManager.prototype.createNomre = function(){
