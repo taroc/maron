@@ -65,6 +65,65 @@ pageManager.prototype.createNomre = function(){
     return $div;
 };
 
+pageManager.prototype.createMargin = function(){
+//余白の高さを分の大きさを持つ要素を作成する
+    var rh = this.remainHeight;
+    var fh = this.footerHeight;
+    var h = rh + fh;
+    
+    var $div = $('<div></div>',{
+        height:  h +'px',
+        addClass: 'page-num'
+    });
+    $div.html('<div></div>');
+
+    return $div;
+};
+
+pageManager.prototype.createNomreRoman = function(){
+    var a = [
+    [1000, "M"],
+    [900, "CM"],
+    [500, "D"],
+    [400, "CD"],
+    [100, "C"],
+    [90, "XC"],
+    [50, "L"],
+    [40, "XL"],
+    [10, "X"],
+    [9, "IX"],
+    [5, "V"],
+    [4, "IV"],
+    [1, "I"]
+    ];
+    var m = new Map(a);
+
+    var roman = function(number) {
+        var div = number;
+        var r = "";
+        for (var key of m.keys()) {
+            while ((div / key) >= 1) {
+                r += m.get(key);
+                div -= key;
+            } ;
+        }
+        //console.log(r);
+        return r;
+    };
+//余白の高さを分の大きさを持つ要素を作成する
+    var rh = this.remainHeight;
+    var fh = this.footerHeight;
+    var h = rh + fh;
+    
+    var $div = $('<div></div>',{
+        height:  h +'px',
+        addClass: 'page-num'
+    });
+    $div.html('<div>' + roman(this.num) + '</div>');
+
+    return $div;
+};
+
 pageManager.prototype.newPage = function($elem, height){
     //改ページする
     this.num += 1;
@@ -85,21 +144,31 @@ page.calculate_pages = function(){
         
         var $elemHeight = $elem.outerHeight(true);
         var tagName = $elem.prop('tagName');
+        var isFirstH1 = true;
     
         if(tagName == 'H1'){
             //h1は強制改ページ
-            if(i!=0){
+            if(!isFirstH1){
                 pm.num += 1;
                 $elem.before(pm.createNomre());
+                $elem.attr({'data-page':pm.num});
                 pm.reset();
+                pm.remainHeight -= $elemHeight;
+                return;
             }
+            isFirstH1 = false;
+            $elem.attr({'data-page':pm.num+1});
             pm.remainHeight -= $elemHeight;
             return;
         }
         
+        if($elem.hasClass('page_index')){
+            return;
+        }
         if(pm.remainHeight > $elemHeight){
             //要素がページに入るので改ページしない
             pm.remainHeight -= $elemHeight;
+            $elem.attr({'data-page':pm.num+1});
             return;
         }
         
@@ -136,10 +205,77 @@ page.calculate_pages = function(){
         }else{
             //pタグ以外は分割しないのでそのまま改ページする
             pm.newPage($elem, $elemHeight);
+            $elem.attr({'data-page':pm.num+1});
         }
     });
     
     //最後の要素の後ろにページ番号を入れる
     pm.num += 1;
     $($views[$views.length - 1]).after(pm.createNomre());
+};
+
+page.create_index = function(){
+    var $tmp = $('.page_index');
+    $tmp.remove();
+    var $index = $('<ol></ol>');
+    $index.addClass('page_index');
+    var $view = $('#view');
+    $view.prepend($index);
+    var $h1 = $('<h1>目次</h1>');
+    $h1.addClass('page_index');
+    $index.before($h1);
+    var $views = $view.children();
+    $views.each(function(){
+        var $elem = $(this);
+        var tagName = $elem.prop('tagName');
+        if(tagName == 'H1'){
+            if($elem.hasClass('page_index')){
+                return;
+            }
+            var $list = $('<li>' + $elem.text() +'</li>');
+            $list.addClass('chapter');
+            $list.attr({'data-num':$elem.attr('data-num')});
+            $list.attr({'data-page':$elem.attr('data-page')});
+            $index.append($list);
+        }
+        if(tagName == 'H2'){
+            var $list = $('<li>' + $elem.text() +'</li>');
+            $list.addClass('section');
+            $list.attr({'data-num':$elem.attr('data-num')});
+            $list.attr({'data-page':$elem.attr('data-page')});
+            $index.append($list);
+        }
+        if(tagName == 'H3'){
+            var $list = $('<li>' + $elem.text() +'</li>');
+            $list.addClass('subsection');
+            $list.attr({'data-num':$elem.attr('data-num')});
+            $list.attr({'data-page':$elem.attr('data-page')});
+            $index.append($list);
+        }
+    });
+    
+    var $indexes = $index.children();
+
+    var pm = new pageManager();
+    pm.remainHeight -= $h1.outerHeight(true);
+    
+    $indexes.each(function(i){
+        var $elem = $(this);
+        
+        var $elemHeight = $elem.outerHeight(true);
+        
+        if(pm.remainHeight > $elemHeight){
+            //要素がページに入るので改ページしない
+            pm.remainHeight -= $elemHeight;
+            return;
+        }
+        
+        //ここまでくるということは残りの高さより要素の高さが大きので改ページする
+        this.num += 1;
+        $elem.before(this.createNomreRoman());
+        this.reset();
+        this.remainHeight -= $elemHeight;
+    });
+    pm.num += 1;
+    $($indexes[$indexes.length - 1]).after(pm.createNomreRoman());
 };

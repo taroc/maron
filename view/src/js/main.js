@@ -9,7 +9,7 @@ $(document).ready(function(){
     
     var target = $("#view_wrapper");
 
-    window.render_markdown = function(mdtext, filepath){
+    window.render_markdown = function(mdtext, filepath, isViewIndex){
         renderer.init_number();
         renderer.filepath = filepath;
         
@@ -37,6 +37,13 @@ $(document).ready(function(){
             //改ページを計算
             page.calculate_pages();
             
+            //目次を表示
+            if(isViewIndex){
+                page.create_index();
+            }
+            
+            page.create_cover();
+            
             //改ページ部分の余白を設定
             //この余白は本文の余白ではないため
             //改ページの計算に含めてはいけない
@@ -53,7 +60,7 @@ $(document).ready(function(){
     $.ajax({
         url: target[0].attributes["src"].value,
     }).done(function(data){
-        render_markdown(data, '');
+        render_markdown(data, '', true);
     }).fail(function(data){
         console.log("This content failed to load.");
     });

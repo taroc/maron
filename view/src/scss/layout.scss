@@ -163,6 +163,80 @@ p {
     line-height: 1.5;
     padding-bottom: 20px;
 }
+h1.page_index {
+    padding-left: 0;
+    padding-bottom: 20px;
+    &:before {
+        display: none;
+    }
+}
+ol.page_index {
+    list-style-type: none;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+ol.page_index li.chapter {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 1.6rem;
+    padding-top: 10px;
+    &:before {
+        text-align: right;
+        display: inline-block;
+        content: attr(data-num);
+        width: 3rem;
+        padding-right: 1rem;
+    }
+    &:after {
+        position: absolute;
+        right: 0px;
+        content: attr(data-page);
+        text-align: right;
+    }
+}
+ol.page_index li.section {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 1.6rem;
+    opacity: 1;
+    &:before {
+        text-align: right;
+        display: inline-block;
+        content: attr(data-num);
+        width: 3rem;
+        padding-right: 1rem;
+    }
+    &:after {
+        position: absolute;
+        right: 0px;
+        content: attr(data-page);
+        text-align: right;
+    }
+}
+ol.page_index li.subsection {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 1.5rem;
+    padding-left: 4rem;
+    &:before {
+        text-align: left;
+        display: inline-block;
+        content: attr(data-num);
+        width: 3rem;
+        padding-right: 1rem;
+    }
+    &:after {
+        position: absolute;
+        right: 4rem;
+        content: attr(data-page);
+        text-align: right;
+    }
+}
+
 @page {
     size: A4;
     margin: 25.5mm 20mm 17.5mm;

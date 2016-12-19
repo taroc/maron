@@ -81,8 +81,17 @@ var template = [
                 click: function(){
                     win.webContents.send('reload');
                 }
-            },{
-                label: 'Toggle DevTools',
+            }, {
+                label: '目次を表示',
+                type: 'checkbox',
+                checked: true,
+                accelerator: 'Command+I',
+                click: function(){
+                    win.webContents.send('toggle-index');
+                }
+            }
+        ]
+    }, {
         label: '開発',
         submenu: [
             {
