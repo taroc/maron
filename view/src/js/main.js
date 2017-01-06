@@ -15,6 +15,7 @@ $(document).ready(function(){
         renderer.front_cover = null;
         
         //markdownをhtmlに
+        mdtext = mdtext.replace(/_/g, '\\_');
         var md = marked(mdtext, {renderer: renderer});
         var viewer = document.getElementById('view');
         viewer.innerHTML = md;

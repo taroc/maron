@@ -222,7 +222,7 @@ renderer.code = function (code, language) {
                 + '</figcaption>\n'
                 + '</figure>';
     }
-    else if(language == 'front_cover'){
+    else if(language == 'frontCover'){
         console.log(code)
         this.front_cover = JSON.parse(code);
         return '';
