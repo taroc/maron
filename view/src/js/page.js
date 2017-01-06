@@ -42,7 +42,7 @@ page.set_link_number = function(){
 };
 var pageManager = function(){
     this.footerHeight = 30;
-    this.pageSize = 1270;
+    this.pageSize = 1370;
     this.remainHeight = this.pageSize - this.footerHeight;
     this.num = 0;
 };
