@@ -219,7 +219,7 @@ renderer.code = function (code, language) {
         var title = language.split(':')[0];
         var label = language.split(':')[1];
         this.counter_figcap += 1;
-        return '<figure id="fig:' + label + '" class="image">\n'
+        return '<figure id="fig-' + label + '" class="image">\n'
                 + '<div class="mermaid">\n'
                 + code
                 + '</div>\n'
