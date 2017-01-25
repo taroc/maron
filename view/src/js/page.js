@@ -163,6 +163,16 @@ page.calculate_pages = function(){
             return;
         }
         
+        if(tagName == 'HR'){
+            //hrは強制改ページ
+            pm.num += 1;
+            $elem.before(pm.createNomre());
+            $elem.attr({'data-page':pm.num});
+            pm.reset();
+            pm.remainHeight -= $elemHeight;
+            return;
+        }
+        
         if($elem.hasClass('page_index')){
             return;
         }
