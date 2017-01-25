@@ -81,19 +81,27 @@ renderer.paragraph = function (text) {
     var re = /(\$\$[\s \S])([\s \S \w \d]*)(^\$\$$)/m;
     if (re.test(text)) {
         var equation = text.match(re);
-        return '<p>$$\\begin{align}\n'
+        equation = equation[2]
+        equation = equation.replace(/[^(notag)]\\\\/g, '\\tag{' + this.counter_h1 + '}\\\\');
+        equation = equation.replace(/\\\\/g, '\\\\[5pt]');
+        if (!(/notag\n$/.test(equation))){
+            equation = equation +' \\tag{' + this.counter_h1 + '}'
+        }
+        return '<p class="eq h1_' + this.counter_h1 + ' h2_' + this.counter_h2 + '">$$\\begin{eqnarray}\n'
                 //行末に章番号情報を埋め込む
-                + equation[2].replace(/\\\\/g, '\\tag{' + this.counter_h1 + '}\\\\')+' \\tag{' + this.counter_h1 + '}\n'
-                + '\\end{align}$$</p>';
+                + equation + '\n'
+                + '\\end{eqnarray}$$</p>';
     }
     
     //番号を振らないとき
     var re = /(\$\#)([\s \S \w \d]*)(\$\#)/m;
     if (re.test(text)) {
         var equation = text.match(re);
-        return '<p>\\begin{align*}'
-                + equation[2]
-                + '\\end{align*}</p>';
+        equation = equation[2]
+        return '<p class="eq h1_' + this.counter_h1 + ' h2_' + this.counter_h2 + '">$$\\begin{eqnarray}'
+                //行末に章番号情報を埋め込む
+                + equation + '\\tag{' + this.counter_h1 + '}\n'
+                + '\\end{eqnarray}$$</p>';
     }
 
     //文章は行毎にspanで囲う
