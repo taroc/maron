@@ -1,5 +1,3 @@
-$base-font-size: 17px;
-
 $bg-color: #555;
 h1, h2, h3, h4, h4, h5, p, figure, ul, div {
     margin: 0;
@@ -25,9 +23,9 @@ body {
     width: 250mm;
     overflow-x: hidden;
     margin: 0;
-    font-size: $base-font-size;
+    font-size: 20px;
     font-family: "Yu Mincho", serif;
-    font-weight: 300;
+    font-weight: 200;
     background-color: #fff;
 }
 #view_wrapper {
@@ -75,7 +73,7 @@ h1 {
         
         li {
             position: relative;
-            padding-left: 30px;
+            padding-left: 40px;
             padding-bottom: 5px;
         }
         li:before{
@@ -86,7 +84,7 @@ h1 {
     }
 }
 h2 {
-    font-size: 30px;
+    font-size: 35px;
     padding-bottom: 20px;
     &:before {
         content: attr(data-num);
@@ -95,7 +93,7 @@ h2 {
 }
 
 h3 {
-    font-size: 20px;
+    font-size: 30px;
     padding-bottom: 20px;
     &:before {
         content: attr(data-num);
@@ -161,7 +159,7 @@ ul {
 }
 p {
     text-indent: 1em;
-    line-height: 1.5;
+    line-height: 1.8;
     padding-bottom: 20px;
 }
 
@@ -277,6 +275,22 @@ hr {
     border: none;
     
 }
+
+.eq+p, figure+p, ul+p .page-num+p {
+    text-indent: 0;
+}
+
+.node rect, .node circle {
+    fill: rgb(255, 255, 255) !important;
+    stroke: rgb(71, 148, 148) !important;
+    stroke-width: 3px !important;
+    rx: 3 !important;
+    ry: 3 !important;
+}
+.edgePath .path {
+    stroke: rgb(71, 148, 148) !important;
+}
+
 @page {
     size: A4;
     margin: 25.5mm 20mm 17.5mm;

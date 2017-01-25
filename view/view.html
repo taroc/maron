@@ -6,6 +6,7 @@
     <script src="../node_modules/mermaid/dist/mermaid.min.js"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
+            displayAlign: "center",
             styles: {
                 '.MathJax_Display': {
                     margin: '0 !important',
@@ -13,7 +14,16 @@
                 }
             },
             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-            CommonHTML: { matchFontHeight: false },
+            CommonHTML: {
+                matchFontHeight: false,
+                scale: 300
+            },
+            "HTML-CSS": {
+                //availableFonts: [],
+                //preferredFont: null,
+                //webFont: "Neo-Euler",
+                scale: 100
+            },
             skipStartupTypeset: true,
             TeX: {
                 equationNumbers: {
