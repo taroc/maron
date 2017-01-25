@@ -110,7 +110,7 @@ renderer.paragraph = function (text) {
     
     //1文しかない場合
     if(lines.length==0){
-        return '<p><span>'
+        return '<p class="h1_' + this.counter_h1 + ' h2_' + this.counter_h2 + '"><span>'
             + text
             + '</span></p>'
     }
@@ -118,7 +118,7 @@ renderer.paragraph = function (text) {
     for (var i=0, len=lines.length; i<len; i++) {
         p_text += '<span>' + lines[i] + '</span>';
     }
-    return '<p>' + p_text + '</p>'
+    return '<p class="h1_' + this.counter_h1 + ' h2_' + this.counter_h2 + '">' + p_text + '</p>'
 };
 
 renderer.heading = function (text, level) {

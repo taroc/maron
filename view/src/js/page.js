@@ -216,8 +216,8 @@ page.calculate_pages = function(){
             //pタグは分割してから改ページする
             var $ps = $elem.children();
             var isOverPage = false;
-            var $pUp = $('<p></p>',{'class':'up'});
-            var $pDown = $('<p></p>',{'class':'down'});
+            var $pUp = $('<p></p>',{'class':'up ' + $elem.attr('class')});
+            var $pDown = $('<p></p>',{'class':'down ' + $elem.attr('class')});
             $elem.after($pUp);
             $pUp.after($pDown);
             $ps.each(function(i){
