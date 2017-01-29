@@ -129,6 +129,10 @@ renderer.heading = function (text, level) {
         if (text=='参考文献') {
             return '<h1 class="bib">' + text + '</h1>';
         }
+        //謝辞の時は番号を降らない
+        if (text=='謝辞') {
+            return '<h1 class="thank">' + text + '</h1>';
+        }
 
         //h1の数を数える
         //h2と画像はリセット
@@ -231,8 +235,11 @@ renderer.code = function (code, language) {
                 + '</figure>';
     }
     else if(language == 'frontCover'){
-        console.log(code)
         this.front_cover = JSON.parse(code);
+        return '';
+    }
+    else if(language == 'about'){
+        this.about = code;
         return '';
     }
     else{

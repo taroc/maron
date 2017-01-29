@@ -346,3 +346,20 @@ page.create_cover = function(content){
     pm.remainHeight -= $cover.outerHeight(true);
     $cover.after(pm.createMargin());
 }
+
+page.create_about = function(content){
+    $('#about').remove();
+    
+    var $about = $(
+        '<section id="about">'
+            +'<h1>' + '概要' + '</h1>'
+            +'<p class="content">' + content + '</p>'
+        +'</section>'
+    );
+    var $view = $('#view');
+    $view.prepend($about);
+    
+    var pm = new pageManager();
+    pm.remainHeight -= $about.outerHeight(true);
+    $about.after(pm.createMargin());
+}

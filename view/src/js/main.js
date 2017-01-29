@@ -43,7 +43,10 @@ $(document).ready(function(){
             if(isViewIndex){
                 page.create_index();
             }
-            
+            //概要を表示
+            if(renderer.about != null){
+                page.create_about(renderer.about);
+            }
             //表紙を表示
             if(renderer.front_cover != null){
                 page.create_cover(renderer.front_cover);
